@@ -1,0 +1,117 @@
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lastpage</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        function disableSubmit() {
+            document.getElementById("submitBtn").disabled = true; // Disable the submit button
+            window.onload = function() {
+                document.getElementById("submitBtn").disabled = false; // Enable the submit button when the page is loaded
+            };
+        }
+    </script>
+</head>
+<body>
+    <!---------------------------------------Header--------------------------------------->
+    <div class="header-contain">
+    <div class="head-section">
+        <div class="logo-section">
+            <h1 class="shimmer">Lastpage</h1>
+        </div>
+        <form class="search-section" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}  
+            <input type="text" name="form_search" required>
+            <input type="submit" value="Search">
+        </form> 
+        <div class="menu-section">
+            <a href="{% url 'profile' %}"><div class="menu">Profile</div></a>
+            <a href="{% url 'request' %}"><div class="menu">Request</div></a>
+            <a href="{% url 'dashboard' %}"><div class="menu">Dashboard</div></a>
+        </div>
+    </div>
+    </div>
+    <!---------------------------------------Header--------------------------------------->
+    <!----------------------------------------Post---------------------------------------->
+    <div class="post-container">
+        <!-------------------------------------create post-------------------------------------------->
+        {% if check != "True" %}
+        <div class="create-post">
+            <img src="{% static 'img/create2.png' %}">
+            <div class="create-content">
+                <h1 style="margin-bottom: 0;">Lastpage</h1>
+                <p style="margin-top: 0;">Share Stories, Exchange Worlds !</p>
+                <input type="button" value="Create Post" onclick="location.href='{% url 'createnew' %}'">
+            </div>
+        </div>
+        {% endif %}
+        <!--------------------------------------post 01--------------------------------->
+        {% if keybook %}
+        {% for book,person_get,pickup_get in keybook %}
+        <form  id="myForm" class="post" method="POST" enctype="multipart/form-data" onsubmit="disableSubmit()">
+            {% csrf_token %}  
+            <input type="hidden" name="current_book_id" value="{{ book.book_id }}">
+            <div class="post-column-1">
+                {% if book.image %}
+                <img src="{{ MEDIA_URL }}{{ book.image.url }}">
+            {% else %}
+                <!-- Handle case where image is missing -->
+                <p>No image available</p>
+            {% endif %}
+            </div>
+            <div class="post-column-2">
+                <div class="Profile-post">
+                    <p style="margin-left: 15px;font-size: larger;text-transform: lowercase;">@{{person_get}}</p>
+                    <p style="margin-right: 15px;"><i class="fa fa-map-marker" style="margin-right: 5px;"></i>{{pickup_get}}</p>
+                </div>
+                <div class="desc-post">
+                    <p style="margin:0px;padding: 0px;font-weight: bold;">{{ book.title }}</p>
+                    <p style="margin:0px;padding: 0px;font-size:small;">by {{ book.author }} | {{ book.category }}</br>
+                        last updated on : {{ book.update_time|date:"d F Y" }}</p>
+                    <p style="margin:0px;padding-top: 3vh;text-align: justify;">{{ book.review }}</p>
+                </div>
+                <div class="ratex-post">
+                    <div class="report">
+                        {% if book.book_id in disablereport %}
+                        <p style="color:red"><i class="fa fa-ban" aria-hidden="true"></i> Post reported</p>
+                        {% else %}
+                        <a href="{% url 'report' book.book_id %}">Report <i class="fa fa-question-circle"></i></a>
+                        {% endif %}
+                    </div>
+                    <div class="coin">
+                        <p><i class="fa fa-empire" style="margin-right: 5px;"></i>{{ book.coin }}</p>
+                    </div>
+                    <div class="excahnge"> 
+                        {% if book.book_id in disable %}
+                        <i class="fa fa-check-circle-o" style="font-size:20px;color:green"></i>
+                        <a href="{% url 'requestvia' book.book_id %}" >View request</a>
+                        {% else %}
+                        <input type="submit" value="Request" id="submitBtn">
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+
+
+        </form>
+        {% endfor %}
+        {% else %}
+        </br>
+        <img src="{% static 'img/noresult.gif' %}" alt="Oops GIF" style="height:25vh;opacity:60%">
+        <p>No result available !</p>
+        {% endif %}
+
+        {% if check == "True" %}
+        <a style="color:blue;font-size:small;text-decoration: none;" href="{% url 'home' %}">( View all )</a>
+        {% endif %}
+
+         <!--------------------------------------post 01--------------------------------->
+    </div>
+    <!----------------------------------------Post---------------------------------------->   
+  
+</body>
+</html>

@@ -1,0 +1,80 @@
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Lastpage</title>
+        {% load static %}
+        <link rel="stylesheet" href="{% static 'style.css' %}">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <script>
+            function validatePassword() {
+                var password = document.getElementById("form_password").value;
+                var confirmPassword = document.getElementById("form_password_confirm").value;
+    
+                if (password != confirmPassword) {
+                    alert("Passwords do not match !");
+                    return false;
+                }
+                return true;
+            }
+    
+
+        </script>
+    </head>
+<body>
+    <!---------------------------------------Header--------------------------------------->
+    <div class="header-contain">
+    <div class="head-section">
+        <div class="logo-section">
+            <h1 class="shimmer">Lastpage</h1>
+        </div>
+        <div class="menu-section">
+            <a href="{% url 'indexpage' %}"><div class="menu"><i class="fa fa-caret-left" style="margin-right: 5px;"></i>Login</div></a>
+        </div>
+    </div>
+    </div>
+    <!---------------------------------------Header--------------------------------------->
+    <div class="page-container">
+
+        <!--------------------------------------post 01--------------------------------->
+        <div class="page">
+            <div class="details-new">
+                <div class="page-name" style="width: 25vb"><p style="margin: 0;padding: 3;">Sign up</p></div>
+                <form class="createnew-form" method="POST" enctype="multipart/form-data" onsubmit="return validatePassword()">
+                    {% csrf_token %}  
+                    <p style="color:red;font-size:small;margin-bottom:0;">{{ error_message }}</p>               
+                    <label >Name</label>
+                    <input type="text" placeholder="Your Name" name="form_name" required>
+                    <label >Mail id</label>
+                    <input type="text" placeholder="user@gmail.com" name="form_mail" required>
+                    <label >Contact number</label>
+                    <input type="text" placeholder="9999 888 777" name="form_mob" required>
+                    <label style="margin-top: 3vh;">Favorite category of the book</label>
+                    <select name="form_fav_cat" required>
+                      <option value="Poetry">Poetry</option>
+                      <option value="Humor">Humor</option>
+                      <option value="Horror">Horror</option>
+                      <option value="Fiction">Fantasy Fiction</option>
+                      <option value="Novel">Novel</option>
+                      <option value="Story">Story</option>
+                      <option value="Thriller">Thriller</option>
+                      <option value="Novel">History</option>
+                      <option value="Self">Self-help book</option>
+                      <option value="Other">Other</option>
+                    </select> 
+                    </br>
+                    <label >Choose a password</label>
+                    <input type="text" placeholder="Your password" name="form_password" id="form_password" required>
+                    <input type="text" placeholder="Confirm password" name="form_password_confirm" id="form_password_confirm" required>
+                    <label style="font-size: x-small;">*Try to include numbers, symbols, and both uppercase and lowercase letters.</br>
+                        Use a longer password. Your password should be at least six characters long,</br>although for extra security it should be even longer.</label> 
+                    <input type="submit" value="Done" style="margin-top: 3vh;" id="submitBtn">
+                </form>
+            </div>
+
+        </div>
+      
+    </div>
+
+</body>
+</html>

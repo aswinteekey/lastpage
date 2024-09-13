@@ -1,0 +1,60 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lastpage</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script>
+        function validatePassword() {
+            var password = document.getElementById("form_password").value;
+            var confirmPassword = document.getElementById("form_password_confirm").value;
+
+            if (password != confirmPassword) {
+                alert("Passwords do not match !");
+                return false;
+            }
+            return true;
+        }
+    </script>
+</head>
+<body>
+    <!---------------------------------------Header--------------------------------------->
+    <div class="header-contain">
+    <div class="head-section">
+        <div class="logo-section">
+            <h1 class="shimmer">Lastpage</h1>
+        </div>
+        <div class="menu-section">
+            <a href="{% url 'profile' %}"><div class="menu"><i class="fa fa-caret-left" style="margin-right: 5px;"></i>Profile</div></a>
+        </div>
+    </div>
+    </div>
+    <!---------------------------------------Header--------------------------------------->
+    <div class="page-container">
+
+        <div class="page">
+            <div class="details-new">
+                <div class="page-name" style="width: 25vb"><p style="margin: 0;padding: 3;">Password</p></div>
+                <form method="POST" enctype="multipart/form-data" onsubmit="return validatePassword()" class="createnew-form">
+                    {% csrf_token %} 
+                    <p style="color:red;font-size:small;margin-bottom:0;">{{ message }}</p>
+                    <input type="text" placeholder="New password" name="form_password" id="form_password" required>
+                    <input type="text" placeholder="Confirm password" name="form_password_confirm" id="form_password_confirm" required>
+                    <label style="font-size: x-small;">*Try to include numbers, symbols, and both uppercase and lowercase letters.</br>
+                        Use a longer password. Your password should be at least six characters long,</br>although for extra security it should be even longer.</label> 
+                </br>
+                    <label >Enter password to confirm</label>
+                    <input type="password" placeholder="Current password" name="form_PW" required>
+
+                    <input type="submit" value="Done" style="margin-top: 3vh;">
+                </form>
+            </div>
+
+        </div>
+      
+    </div>
+
+</body>
+</html>

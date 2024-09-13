@@ -1,0 +1,28 @@
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Collection point</title>
+        {% load static %}
+        <link rel="stylesheet" href="{% static 'lastpage.collection/stylecoll.css' %}">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    </head>
+<body>
+    <div class="ad-first">
+        <h1 style="margin-bottom: 0;">Lastpage Collection point</h1>
+        <p style="margin-top: 0;margin-bottom: 5vh;">Share stories. Share worlds !</p>
+        <p style="color:red;font-size:small;">{{ error }}</p>
+        <form class="ad-login" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}  
+            <label >Select collection point</label>
+            <select name="form_coll_id" style="width: 40vb;" required>
+                {% for key_obj in key %}
+                <option value="{{ key_obj.coll_id }}">{{ key_obj.coll_pname }}</option>
+                {% endfor %}
+            </select>
+            <input type="password" placeholder="Password"  style="width: 40vb;" name="form_password" required>
+            <input type="submit" value="Start" style="margin-top: 3vh;">
+        </form>
+    </div>
+</body>
+</html>

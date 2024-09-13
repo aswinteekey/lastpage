@@ -1,0 +1,31 @@
+
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Lastpage</title>
+        {% load static %}
+        <link rel="stylesheet" href="{% static 'style.css' %}">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    </head>
+<body>
+    <div class="first">
+        <h1 class="shimmer" style="margin-bottom: 0;">Lastpage</h1>
+        <p style="margin-top: 0;margin-bottom: 5vh;">Share Stories, Exchange Worlds !</p>
+        <form class="login" method="POST" action="{% url 'indexpage' %}">
+            {% csrf_token %}
+            <input type="text" placeholder="Mail id" style="width: 38vb;" name="form_mail" required>
+            <input type="password" placeholder="Password"  style="width: 38vb;" name="form_password" required>
+            <input type="submit" value="Login" style="margin-top: 3vh;">
+        </form>
+        <p style="color:red;font-size:small;margin-top:0px;">{{ error }}</p>
+        <a style="color:blue;font-size:small;text-decoration: none;" href="{% url 'forgotpw' %}">Forgot password ?</a>
+        <p style="margin-top: 2vh;text-align: center;">Hey Reader,</br>
+            Enter your details and start your journey with us !</p>
+        <div class="edit-profile-pw">
+            <a class="edit-profile-pw" href="{% url 'signup' %}">Sign up</a>
+            <a class="edit-profile-pw" href="{% url 'about' %}">About us</a>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,250 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins');
+
+body {
+    font-family: 'Poppins';
+    margin: 0%;
+    padding: 0%;
+}
+/*---------------------------indexpage-------------------*/
+.ad-first{
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.ad-login {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.ad-login > input[type=submit],.add-pick > input[type=submit]{
+    border-radius:20px;
+    font-family: 'Poppins';
+    height: 6vh;
+    width: 30vb;
+    border: solid 1px rgba(139, 139, 139, 0.644);
+    cursor: pointer;
+}
+.ad-login > input[type=submit]:hover,.add-pick> input[type=submit]:hover{
+    background-color: rgb(212, 214, 214);
+ }
+
+.ad-login > input[type=text], .ad-login > input[type=password],.add-pick> input[type=text],.add-pick> input[type=number]{
+    padding: 12px 12px;
+    display: inline-block;
+    border: 1px solid #cccccc5b;
+    border-radius: 10px;
+    box-sizing: border-box;
+    background-color: rgba(0, 0, 0, 0.021);
+    width: 70vb;
+    font-family: 'Poppins';
+    margin: 5px;
+}
+.ad-login > input[type=text]:focus,  .ad-login > input[type=password]:focus,.add-pick> input[type=text]:focus{
+    outline: none;
+    background-color: #fcfcfc;
+    border: solid 0.5px rgb(155, 153, 153);
+}
+/*-----------------home---------------*/
+.ad-header-contain{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    background-color: rgb(245, 245, 245);
+    height: max-content;
+    height: 15vh;
+    position: fixed;
+    top: 0;
+    z-index: 4;
+    
+}
+.ad-head-section{
+    width: 85%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 5;
+    position: fixed;
+    top: 0;
+}
+.ad-menu-section{
+    display: flex;
+    flex-direction: row;
+}
+.ad-page-container{
+    margin-top: 15vh;
+    width: 100%;
+    height: 85vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+}
+.ad-page-container2{
+    margin-top: 15vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    padding-bottom: 5vh;
+}
+.ad-dash{
+    width: 85%;
+    height: 100%;
+    margin-top: 3vh;
+    margin-bottom: 3vh;
+    padding-bottom: 2vh;
+    background-color: rgba(238, 237, 237, 0.322);
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: column;
+}
+.ad-sqr{
+    width: 80%;
+    height: 40%;
+    margin-top: 3vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+
+}
+.ad-sqr3{
+    width: 30%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border: dashed rgba(0, 0, 0, 0.171) 0.5px;
+    border-radius: 20px;
+    text-decoration: none;
+    color: #222;
+}
+.ad-sqr3:hover{
+    background-color: rgba(199, 198, 198, 0.212);
+}
+.ad-menu-section > a ,.add-pick > a,.pick > a,.add-pick-del > a{
+    text-decoration: none;
+    color: #686666;
+}
+
+.ad-menu-section > a:hover ,.add-pick > a:hover,.add-pick-del > a:hover{
+    color: black;
+    font-weight: bold;
+}
+/*------------------pickup------------------*/
+.pick{
+    width: 85%;
+    margin-top: 3vh;
+    margin-bottom: 3vh;
+    background-color: rgba(238, 237, 237, 0.322);
+    border: dashed rgba(0, 0, 0, 0.171) 0.5px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.add-pick{
+    margin-top: 2vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+/*------------report-------------*/
+.report-list{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 80%;
+}
+.pick-list{
+    width: 85%;
+    margin-bottom: 1vh;
+    background-color: rgba(238, 237, 237, 0.322);
+    display: flex;
+    border: solid rgba(0, 0, 0, 0.171) 0.5px;
+    border-radius: 3px;
+    display: flex;
+    justify-content: center;
+}
+
+.pick-list:hover{
+    background-color: rgba(238, 237, 237, 0.911);
+}
+/*---------------report-------------*/
+.ad-post{
+    width: 97%;
+    margin-top: 3vh;
+    display: flex;
+    flex-direction: row;
+    background-color: rgba(238, 237, 237, 0.322);
+    height: auto;
+}
+.ad-post-column-1{
+    width: 50%;
+}
+.ad-post-column-1 > img{
+    width: 100%;
+}
+.ad-post-column-2 {
+    width: 50%;
+}
+.ad-Profile-post{
+    background-color: #d4d3d331;
+    height: 8vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+.ad-desc-post {
+    padding: 15px;
+}
+.ad-ratex-post{
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.ad-excahnge  > input[type=button] {
+
+    border-radius:20px;
+    font-family: 'Poppins';
+    height: 6vh;
+    width: 15vb;
+    border: solid 1px rgba(139, 139, 139, 0.644);
+    cursor: pointer;
+}
+.ad-excahnge  > input[type=button]:hover {
+    background-color: rgb(212, 214, 214);
+}
+.ad-msg{
+    width: 85%;
+    margin-top: 3vh;
+    padding-left: 3vh;
+    padding-right: 3vh;
+    padding-bottom: 1vh;
+    background-color: rgba(238, 237, 237, 0.322);
+    height: 75vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.accept,.reject{
+    border-radius:20px;
+    font-family: 'Poppins';
+    height: 5vh;
+    width: 15vb;
+    border: solid 1px rgba(139, 139, 139, 0.644);
+    cursor: pointer;
+}
+.reject:hover{
+    background-color: rgba(250, 155, 142, 0.699);
+ }
+ .accept:hover{
+    background-color: rgba(162, 245, 145, 0.767);
+ }

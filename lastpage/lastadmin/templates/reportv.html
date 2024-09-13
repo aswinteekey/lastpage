@@ -1,0 +1,40 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lastpage Admin</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'lastpage.lastadmin/style.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+    <!---------------------------------------Header--------------------------------------->
+    <div class="ad-header-contain">
+    <div class="ad-head-section">
+        <div class="ad-logo-section">
+            <h1>Lastpage admin</h1>
+        </div>
+        <div class="ad-menu-section">
+            <a href="{% url 'adminhome' %}"><div class="ad-menu"><i class="fa fa-caret-left" style="margin-right: 5px;"></i>Home</div></a>
+        </div>
+    </div>
+    </div>
+    <div class="ad-page-container2">
+        <div class="pick">
+        <p >Report requests</p>
+        <!-------------report1-->
+        {% for key_obj in report %}
+        <a href="{% url 'reportconfirm' key_obj.report_id %}" class="pick-list" >
+            <div class="report-list">
+                <p>{{key_obj.reason}}</p>
+                <p>{{key_obj.note}}</p>
+                <p style="text-transform:lowercase;">Reported by : {{key_obj.user.user_name}}</p>
+           </div>
+        </a>
+        {% endfor%}
+        <!-------------report1-->
+        <!-------------report1--> 
+    </div>     
+    </div>
+</body>
+</html>

@@ -1,0 +1,90 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lastpage</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+    <!---------------------------------------Header--------------------------------------->
+    <div class="header-contain">
+    <div class="head-section">
+        <div class="logo-section">
+            <h1 class="shimmer">Lastpage</h1>
+        </div>
+        <div class="menu-section">
+            <a href="{% url 'profile' %}"><div class="menu"><i class="fa fa-caret-left" style="margin-right: 5px;"></i>Profile</div></a>
+        </div>
+    </div>
+    </div>
+    <!---------------------------------------Header--------------------------------------->
+    <div class="page-container">
+
+        <!--------------------------------------post 01--------------------------------->
+        <div class="page">
+            <div class="details-new">
+                <div class="page-name" style="width: 25vb"><p style="margin: 0;padding: 3;">Edit post</p></div>
+                <p style="color:red;font-size:small;margin-bottom:0px;">{{ error }}</p>
+                <form method="POST" enctype="multipart/form-data" class="createnew-form">
+                    {% csrf_token %}  
+                    <label >Book title</label>
+                    <input type="text" value="{{ book.title }}" name="form_title" required>
+                    <label >Author</label>
+                    <input type="text" value="{{ book.author }}" name="form_author" required>
+                    <label >About Book</label>
+                    <textarea style="resize: none;height: 40vh;" name="form_review" required>{{ book.review }}</textarea>
+                    <div class="coin-convert">
+                        <div class="mrp">
+                            <label >MRP of the book</label>
+                            <input type="number" value="{{ book.mrp }}" style="width: 20vb;" name="form_mrp" required>
+                        </div>
+                    </div>
+                    <label style="font-size: x-small;">*Exchange coin value = 10% of MRP (Rounded)</label>
+                    <label style="margin-top: 3vh;">Select Exchange Location</label>
+                    <select name="form_coll_id" required>
+                        {% for coll_obj in coll %}
+                        {% if coll_obj.coll_id == book.c_point.coll_id %}
+                            <option value="{{ coll_obj.coll_id }}" selected>{{ coll_obj.coll_pname }}</option>
+                        {% else %}
+                            <option value="{{ coll_obj.coll_id }}">{{ coll_obj.coll_pname }}</option>
+                        {% endif %}
+                    {% endfor %}
+                    </select>
+                    <label style="font-size: x-small;">*Currently available pickup points , we will add more points in future</label> 
+                      <label style="margin-top: 3vh;">Select category of the book</label>
+                      <select name="form_cat" id="pickup" required>
+                        <option value="Poetry" {% if book.category == "Poetry" %} selected {% endif %}>Poetry</option>
+                        <option value="Humor" {% if book.category == "Humor" %} selected {% endif %}>Humor</option>
+                        <option value="Horror" {% if book.category == "Horror" %} selected {% endif %}>Horror</option>
+                        <option value="Fantasy Fiction" {% if book.category == "Fantasy Fiction" %} selected {% endif %}>Fantasy Fiction</option>
+                        <option value="Novel" {% if book.category == "Novel" %} selected {% endif %}>Novel</option>
+                        <option value="Thriller" {% if book.category == "Thriller" %} selected {% endif %}>Thriller</option>
+                        <option value="History" {% if book.category == "History" %} selected {% endif %}>History</option>
+                        <option value="Self-help book" {% if book.category == "Self-help book" %} selected {% endif %}>Self-help book</option>
+                        <option value="Other" {% if book.category == "Other" %} selected {% endif %}>Other</option>
+                    </select>
+                    </br>
+                      <label style="margin-top: 3vh;">Update if any changes</label>
+                      <label>Otherwise skip this</label>
+                      <div>
+                        <img src="{{ MEDIA_URL }}{{ book.f_pic.url }}" style="width:15vw">
+                        <img src="{{ MEDIA_URL }}{{ book.b_pic.url }}" style="width:15vw">
+                      </div>
+                      <input type="file" id="myFile" name="form_pic1" accept="image/jpeg, image/png"> 
+                      <input type="file" id="myFile" name="form_pic2" accept="image/jpeg, image/png"> 
+                      <label style="font-size: x-small;">*These images will not be shown in the post.It is used for secure exchange purpose only</label> 
+                    <input type="submit" value="Done"style="margin-top: 3vh;">
+                </form>
+            </div>
+
+        </div>
+
+         <!--------------------------------------post 01--------------------------------->
+      
+    </div>
+    <!----------------------------------------Post---------------------------------------->
+
+</body>
+</html>

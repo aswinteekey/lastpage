@@ -1,0 +1,85 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lastpage</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <!---------------------------------------Header--------------------------------------->
+    <div class="header-contain">
+    <div class="head-section">
+        <div class="logo-section">
+            <h1 class="shimmer">Lastpage</h1>
+        </div>
+        <div class="menu-section">
+            <a href="{% url 'dashboard' %}"><div class="menu"><i class="fa fa-caret-left" style="margin-right: 5px;"></i>Dashboard</div></a>
+        </div>
+    </div>
+    </div>
+    <div class="page-container">
+
+        <div class="dash">
+            <div class="details-profile">
+                <div class="page-name" style="width: 25vb" ><p style="margin: 0;padding: 3;">Buy coins</p></div> 
+            </div>
+            <div class="sqr">
+                <a href="{% url 'gateway50' %}" class="sqr3">
+                    <h1 style="font-weight: 100;margin-bottom: 0%;">50</h1>
+                    <p style="margin: 0%;">Coins</p>
+                    <p style="margin-top: 0%;font-size: small;">₹50</p>
+                </a>
+                <a href="{% url 'gateway100' %}" class="sqr3">
+                    <h1 style="font-weight: 100;margin-bottom: 0%;">100</h1>
+                    <p style="margin: 0%;">Coins</p>
+                    <p style="margin-top: 0%;font-size: small;">₹100</p>
+                </a>
+                <a href="{% url 'gateway200' %}" class="sqr3">
+                    <h1 style="font-weight: 100;margin-bottom: 0%;">200</h1>
+                    <p style="margin: 0%;">Coins</p>
+                    <p style="margin-top: 0%;font-size: small;">₹200</p>
+                </a>
+            </div>
+            <p style="font-size: small;text-align: center;"></br>By clicking on the amount link above, you will be directed to the payment gateway.</br>
+                Please do not refresh while the transaction is in progress. </br></br>
+                The coin will be updated to your account within 2 hours - 24 hours after the transaction.</br>
+                Please mail us <a href="mailto: lastpageproject2024@gmail.com" style="text-decoration: none;">lastpageproject2024@gmail.com</a> if there is any problem regarding payment </p>
+            </br><p>Or Redeem voucher</p>
+            <form class="dash2"id="myForm" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <input type="text" placeholder="Enter code" name="red_form_code" style="width: 30vb;border-radius: 20px;" required>
+            <input type="submit" value="Apply" style="height: 7vh;">
+            </form>
+      
+    </div>
+    <script>
+        $(document).ready(function() {
+            $('#myForm').submit(function(e) {
+                e.preventDefault(); // Prevent form submission
+                var formData = $(this).serialize(); // Serialize form data
+                $.ajax({
+                    url: $(this).attr('action'),
+                    type: 'POST',
+                    data: formData,
+                    success: function(response) {
+                        if (response.success) {
+                            alert('Redeem Successful !'); // Show success pop-up
+                            window.location.href = response.redirect_url;
+                        } else {
+                            // Show failure pop-up
+                            alert('Code unavailable/Already used');
+                        }
+                    },
+                    error: function() {
+                        alert('Error!'); // Show error pop-up
+                    }
+                });
+            });
+        });
+    </script>
+
+</body>
+</html>

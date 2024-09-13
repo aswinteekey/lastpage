@@ -1,0 +1,36 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lastpage Admin</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'lastpage.lastadmin/style.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+    <!---------------------------------------Header--------------------------------------->
+    <div class="ad-header-contain">
+    <div class="ad-head-section">
+        <div class="ad-logo-section">
+            <h1>Lastpage admin</h1>
+        </div>
+        <div class="ad-menu-section">
+            <a href="{% url 'adminhome' %}"><div class="ad-menu"><i class="fa fa-caret-left" style="margin-right: 5px;"></i>Home</div></a>
+        </div>
+    </div>
+    </div>
+    <div class="ad-page-container">
+        <div class="pick">
+                <form class="add-pick" method="POST">
+                    {% csrf_token %}
+                    <p style="margin-top: 0%;">Edit offer</p>
+                    <label >Offer code</label>
+                    <input type="text" style="width: 40vb;" name="form_code" value="{{key.code}}" required>
+                    <label >Offer value ( Coin )</label>
+                    <input type="number" style="width: 40vb;" name="form_coin"  value="{{key.coin}}" required>
+                    <input type="submit" value="Done" style="margin-top: 2vh;">
+                </form>
+        </div>
+    </div>
+</body>
+</html>

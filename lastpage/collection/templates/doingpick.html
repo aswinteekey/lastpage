@@ -1,0 +1,50 @@
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Collection point</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'lastpage.collection/stylecoll.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+    <!---------------------------------------Header--------------------------------------->
+    <div class="ad-header-contain">
+        <div class="ad-head-section">
+            <div class="ad-logo-section">
+                <h1>Lastpage Collection point</h1>
+            </div>
+        </div>
+        </div>
+
+    <div class="ad-page-container">
+
+        <div class="ad-msg">
+            <form class="ad-messenger-name" method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <h3>Box open !</h3>
+                <p>Please check the book condition and hit Accept if its ok</p>
+                <div class="book-pic">
+                    <div class="book-pic1">
+                        <img src="{{ MEDIA_URL }}{{ key.book.f_pic.url }}" style="margin:1px">
+                        <img src="{{ MEDIA_URL }}{{ key.book.b_pic.url }}" style="margin:1px">
+                    </div>
+                </div>
+                <br>
+                <input type="submit" value="Accept">    
+                <div>
+                    <p style="font-size:small;">If picture shown above is not currect,</br>
+                        then put back book and click Reject</p>
+                    <a href="{% url 'rejectabook' key.exc_id %}" style="text-decoration: none;color:red;">Reject</a>
+                </div>   
+            </form>
+                  
+
+
+        </div>
+
+      
+    </div>
+</body>
+</html>

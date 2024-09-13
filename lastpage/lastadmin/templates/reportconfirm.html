@@ -1,0 +1,57 @@
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lastpage Admin</title>
+    <link rel="stylesheet" href="{% static 'lastpage.lastadmin/style.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+    <!---------------------------------------Header--------------------------------------->
+    <div class="ad-header-contain">
+    <div class="ad-head-section">
+        <div class="ad-logo-section">
+            <h1>Lastpage admin</h1>
+        </div>
+        <div class="ad-menu-section">
+            <a href="{% url 'reportv' %}"><div class="ad-menu"><i class="fa fa-caret-left" style="margin-right: 5px;"></i>Report</div></a>
+        </div>
+    </div>
+    </div>
+    <div class="ad-page-container">
+        <div class="pick">
+        <p >Report requests</p>
+
+        <!--------------------------------------post 01--------------------------------->
+        <div class="ad-post">
+            <div class="ad-post-column-1">
+                <img src="{{ MEDIA_URL }}{{ report.book.image.url }}">
+            </div>
+            <div class="ad-post-column-2">
+                <div class="ad-Profile-post">
+                    <p style="margin-left: 15px;font-size: larger;text-transform: lowercase;">@{{ report.book.user.user_name }}</p>
+                    <p style="margin-right: 15px;"><i class="fa fa-map-marker" style="margin-right: 5px;"></i>{{ report.book.c_point.coll_pname }}</p>
+                </div>
+                <div class="ad-desc-post">
+                    <p style="margin:0px;padding: 0px;font-weight: bold;">{{ report.book.title }}</p>
+                    <p style="margin:0px;padding: 0px;text-align: justify;">{{ report.book.review }}</p>
+                </div>
+                <div class="ad-ratex-post">
+                    <div class="ad-excahnge">
+                        <input type="button" value="Delete" onclick="location.href='{% url 'reportdelete' report.report_id %}'">
+                    </div>
+                    <div class="ad-excahnge">
+                        <input type="button" value="Ignore" onclick="location.href='{% url 'reportignore' report.report_id %}'">
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+
+         <!--------------------------------------post 01--------------------------------->
+    </div>     
+    </div>
+</body>
+</html>

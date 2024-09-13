@@ -1,0 +1,53 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lastpage</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+    <!---------------------------------------Header--------------------------------------->
+    <div class="header-contain">
+    <div class="head-section">
+        <div class="logo-section">
+            <h1 class="shimmer">Lastpage</h1>
+        </div>
+        <div class="menu-section">
+            <a href="{% url 'indexpage' %}"><div class="menu"><i class="fa fa-caret-left" style="margin-right: 5px;"></i>Login</div></a>
+        </div>
+    </div>
+    </div>
+    <!---------------------------------------Header--------------------------------------->
+    <div class="page-container">
+        <div class="page">
+            <div class="details-profile" style="padding: 0 5vb 5vb 5vb;">
+                <div class="page-name" style="width: 25vb"><p style="margin: 0;padding: 3;">About us</p></div>
+                <h2 style="font-weight: lighter;">What is LastPage ?</h2>
+                <h4 style="font-weight: lighter;margin: 0%;text-align: justify;">LastPage Exchange is an innovative web application designed 
+                    to facilitate the exchange of used books through a coin-based system. Users can effortlessly trade 
+                    their pre-owned books by utilizing virtual coins provided within the platform. Additionally, LastPage 
+                    Exchange offers a unique feature where users can post reviews about their books, enticing other 
+                    members to engage in exchanges.
+                    The platform boasts a user-friendly interface, allowing individuals to browse, list, and search for 
+                    books with ease. Leveraging advanced algorithms, LastPage Exchange ensures fair and efficient matches
+                     between users, enhancing the overall trading experience. By combining the convenience of online 
+                     trading with the value of peer reviews, LastPage Exchange aims to create a vibrant community 
+                     dedicated to sustainable book exchange and knowledge sharing.</h4>
+                <h2 style="font-weight: lighter;">How it works ?</h2>
+                <h4 style="font-weight: lighter;margin: 0%;text-align: justify;">After creating a user profile, users can
+                     upload a review of a book they own as in a Facebook post. If they like any other book review, they 
+                     can ask to borrow it by trading coins. These coins can be bought from the platform or acquired 
+                     through trading books.
+                    After accepting the borrowing request, they can hand over the book at a specific point provided by 
+                    the platform. Borrower can upload current images of book and owner can accept images for security 
+                    purpose Once this verification of the books is completed, the coins are transferred from the borrower 
+                    to the owner's account to ensure the safety of the books. After completing the book reading period 
+                    the book is returned to the owner and the coins to the other user</h4>
+            </div>
+
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lastpage</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+    <!---------------------------------------Header--------------------------------------->
+    <div class="header-contain">
+    <div class="head-section">
+        <div class="logo-section">
+            <h1 class="shimmer">Lastpage</h1>
+        </div>
+        <div class="menu-section">
+            <a href="{% url 'home' %}"><div class="menu"><i class="fa fa-caret-left" style="margin-right: 5px;"></i>Home</div></a>
+        </div>
+    </div>
+    </div>
+    <!---------------------------------------Header--------------------------------------->
+    <div class="page-container">
+
+        <div class="page">
+            <div class="details-new">
+                <div class="page-name" style="width: 25vb"><p style="margin: 0;padding: 3;">Report post</p></div>
+                <form class="createnew-form" method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}  
+                    <label >Select the reason</label>
+                    <select name="form_reason">
+                        <option value="I just don't like it">I just don't like it</option>
+                        <option value="Hate speech or symbols">Hate speech or symbols</option>
+                        <option value="Bullying or harassment">Bullying or harassment</option>
+                        <option value="Nudity or sexual activity">Nudity or sexual activity</option>
+                        <option value="Something else">Something else</option>
+                      </select>
+                    <label >Please explain the reason</label>
+                    <textarea placeholder="Explain reporting reason" name="form_note"
+                     style="resize: none;height: 25vh;" required></textarea>
+                    <input type="submit" value="Report"style="margin-top: 3vh;">
+                    <label style="font-size: small;"></br><center>Your report helps us improve our processes and keep Lastpage safe for everyone.</br>
+                    We remove anything that doesn't follow our standards as quickly as possible.</center></label>
+                </form>
+            </div>
+
+        </div>
+      
+    </div>
+
+</body>
+</html>

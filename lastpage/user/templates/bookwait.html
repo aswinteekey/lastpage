@@ -1,0 +1,134 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lastpage</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+    <!---------------------------------------Header--------------------------------------->
+    <div class="header-contain">
+    <div class="head-section">
+        <div class="logo-section">
+            <h1 class="shimmer">Lastpage</h1>
+        </div>
+        <div class="menu-section">
+            <a href="{% url 'request' %}"><div class="menu"><i class="fa fa-caret-left" style="margin-right: 5px;"></i>Request</div></a>
+        </div>
+    </div>
+    </div>
+    <!---------------------------------------Header--------------------------------------->
+    <div class="page-container">
+
+        <div class="msg">
+            <div class="messenger-name">
+                <h3   style="margin:0vh;text-transform: lowercase;">@{{ req_details.book.user.user_name}}</h3>
+                <p style="margin:0vh;">{{ req_details.book.title}}</p>
+                <p style="font-size:small;margin-top:0vh;">By {{ req_details.book.author}}</p>
+                <div class="note-rec">
+                    <p style="margin:0vh;">{{ req_details.book_user_note}}</p>
+                    </div>
+                    <div class="note-send">
+                        <p style="margin:0vh;">{{ req_details.user_note}}</p>
+                        <a href="{% url 'noteuser' req_details.exc_id %}" style="font-size:small;text-decoration: none;">update note</a>
+                    </div>
+                {% if req_details.req_time %}
+                    <div href="" class="content-send-wait">
+                        <p style="margin: 0;text-transform: lowercase;">request send  ! wait for updates </p>
+                        <p style="margin: 0;font-size: small;">{{ req_details.req_time|date:"d F Y h:i A"}}</p>
+                    </div>
+                {% endif %}
+                <!---ACCEPT OR REJECT---------------------------------------------------------------------->
+                {% if req_details.acc_time %}
+                <div class="content-rec-wait">
+                    <p style="margin: 0;text-transform: lowercase;">accepted on  </p>
+                    <p style="margin: 0;font-size: small;">{{ req_details.acc_time|date:"d F Y h:i A"}}</p>
+                    <p style="margin: 0;font-size: small;">{{ req_details.book.user.user_name}} will insert book in 
+                        {{ req_details.book.c_point.coll_pname}} collection point shortly</p>
+                </div>             
+                {% endif %}
+                {% if req_details.rej_time %}
+                <div class="content-rec-wait">
+                    <p style="margin: 0;text-transform: lowercase;">request got rejected</p>
+                    <a href="{% url 'deletereq' req_details.exc_id %}" style="text-decoration: none;" >delete request</a>
+                    <p style="margin: 0;font-size: small;">{{ req_details.rej_time|date:"d F Y h:i A"}}</p>
+                </div>             
+                {% endif %}
+                <!---ACCEPT OR REJECT---------------------------------------------------------------------->
+               <!---if book inserted ---------------> 
+               {% if req_details.in_time %}
+                <div class="content-rec-wait">
+                    <p style="margin: 0;text-transform: lowercase;">book has been inserted</p>
+                    <p style="margin: 0;font-size: small;">Please visit {{ req_details.book.c_point.coll_pname}} collection point to take the book</br>
+                        OTP : {% if req_details.user.coin < req_details.book.coin %}
+                        <a href="{% url 'coincheck' %}" style="text-decoration: none;"> Click here to get OTP</a>
+                        {% else %}
+                        {{ req_details.otp}}</p>
+                        {% endif %}
+                    <p style="margin: 0;font-size: small;">{{ req_details.in_time|date:"d F Y h:i A"}}</p>
+                </div>             
+                {% endif %}
+                {% if req_details.out_time %}
+                <div class="content-send-wait">
+                    <p style="margin: 0;text-transform: lowercase;">hey , you got it !</p>
+                    <p style="margin: 0;font-size: small;">{{ req_details.book.coin }} coins transfered to {{ req_details.book.user.user_name}}</br>
+                    this will returns to you once book return completes
+                    </p>
+                    <p style="margin: 0;font-size: small;">{{ req_details.out_time|date:"d F Y h:i A"}}</p>
+                </div>             
+                {% endif %}
+                {% if req_details.out_time %}
+                <div class="content-send-wait">
+                    <p style="margin: 0;font-size: small;">Once read please return back</br>
+                        return OTP : {{ req_details.otp}}</br>
+                        return point : {{ req_details.book.c_point.coll_pname}} collection point
+                </div>             
+                {% endif %}
+                {% if req_details.rej_in_time %}
+                <div class="content-send-wait">
+                    <p style="margin: 0;text-transform: lowercase;">you rejected the book exchange</p>
+                    <p style="margin: 0;font-size: small;">{{ req_details.in_time|date:"d F Y h:i A"}}</p>
+                </div>             
+                {% endif %}
+                {% if req_details.rej_out_time %}
+                <div class="content-rec-wait">
+                    <p style="margin: 0;text-transform: lowercase;">book taken by {{ req_details.book.user.user_name}}</p>
+                    <p style="margin: 0;font-size: small;">check other posts or wait for  {{ req_details.book.user.user_name}}
+                        to update
+                    </p>
+                    <p style="margin: 0;font-size: small;">{{ req_details.in_time|date:"d F Y h:i A"}}</p>
+                </div>             
+                {% endif %}
+                {% if req_details.ret_in_time %}
+                <div class="content-send-wait">
+                    <p style="margin: 0;text-transform: lowercase;">book successfully inserted</p>
+                    <p style="margin: 0;font-size: small;">Please wait {{ req_details.book.user.user_name}} to take it.</br>
+                        after that coin will reflect back  in your account .
+                    </p>
+                    <p style="margin: 0;font-size: small;">{{ req_details.ret_in_time|date:"d F Y h:i A"}}</p>
+                </div>             
+                {% endif %}
+                {% if req_details.ret_out_time %}
+                <div class="content-rec-wait">
+                    <p style="margin: 0;text-transform: lowercase;">book has been taken</p>
+                    <p style="margin: 0;font-size: small;">You got {{ req_details.book.coin }} coins back from {{ req_details.book.user.user_name}}</br>
+                        use this coins to read more.<br>
+                    </p>
+                    <p style="margin: 0;font-size: small;">{{ req_details.ret_out_time|date:"d F Y h:i A"}}</p>
+                </div>             
+                {% endif %}
+
+                
+            </div>
+
+
+        </div>
+
+      
+    </div>
+
+
+</body>
+</html>

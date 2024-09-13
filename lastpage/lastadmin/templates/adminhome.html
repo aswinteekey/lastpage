@@ -1,0 +1,66 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lastpage Admin</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'lastpage.lastadmin/style.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+    <!---------------------------------------Header--------------------------------------->
+    <div class="ad-header-contain">
+    <div class="ad-head-section">
+        <div class="ad-logo-section">
+            <h1>Lastpage admin</h1>
+        </div>
+        <div class="ad-menu-section">
+            
+        </div>
+    </div>
+    </div>
+    <div class="ad-page-container">
+
+        <div class="ad-dash">
+            <div class="ad-sqr">
+                <a href="{% url 'addpick' %}" class="ad-sqr3">
+                    <h2 style="font-weight: 100;margin-bottom: 0%;">Add</h2>
+                    <p style="margin-top: 0%;">Collection points</p>
+                </a>
+                <a href="{% url 'reportv' %}" class="ad-sqr3">
+                    <h2 style="font-weight: 100;margin-bottom: 0%;">View</h2>
+                    <p style="margin-top: 0%;">report request
+                        {% if report > 0 %}
+                        ({{ report }})
+                    {% endif %}
+                    </p>
+                </a>
+                <a href="{% url 'acceptpayents' %}" class="ad-sqr3">
+                    <h2 style="font-weight: 100;margin-bottom: 0%;">Confirm</h2>
+                    <p style="margin-top: 0%;">payments{% if payment > 0 %}
+                        ({{ payment }})
+                    {% endif %}
+                    </p>
+                </a>
+            </div>  
+            <div class="ad-sqr">
+                <a href="{% url 'suggestv' %}" class="ad-sqr3">
+                    <h2 style="font-weight: 100;margin-bottom: 0%;">View</h2>
+                    <p style="margin-top: 0%;">suggestions
+                        {% if suggest > 0 %}
+                        ({{ suggest }})
+                    {% endif %}
+                    </p>
+                </a>
+                <a href="{% url 'offer' %}" class="ad-sqr3">
+                    <h2 style="font-weight: 100;margin-bottom: 0%;">Offer</h2>
+                    <p style="margin-top: 0%;">zone</p>
+                </a>
+                <a href="{% url 'logout_admin' %}" class="ad-sqr3">
+                    <h2 style="font-weight: 100;margin-bottom: 0%;"><i class="fa fa-power-off"></i></h2>
+                    <p style="margin-top: 0%;">Logout</p>
+                </a>
+            </div>  
+    </div>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lastpage Admin</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'lastpage.lastadmin/style.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+    <!---------------------------------------Header--------------------------------------->
+    <div class="ad-header-contain">
+    <div class="ad-head-section">
+        <div class="ad-logo-section">
+            <h1>Lastpage admin</h1>
+        </div>
+        <div class="ad-menu-section">
+            <a href="{% url 'suggestv' %}"><div class="ad-menu"><i class="fa fa-caret-left" style="margin-right: 5px;"></i>Suggestions</div></a>
+        </div>
+    </div>
+    </div>
+    <!---------------------------------------Header--------------------------------------->
+    <div class="ad-page-container">
+
+        <div class="ad-msg">
+            <div class="messenger-name">
+                <h3 style="text-transform:lowercase;">@{{key.user.user_name}}</h3>
+                <p>({{key.type}})</p>
+                <p>{{key.topic}}</p>
+                <p>{{key.desc}}</p>
+                
+            </div>
+
+
+        </div>
+
+      
+    </div>
+
+</body>
+</html>

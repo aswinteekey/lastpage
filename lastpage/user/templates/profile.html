@@ -1,0 +1,86 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lastpage</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+    <!---------------------------------------Header--------------------------------------->
+    <div class="header-contain">
+    <div class="head-section">
+        <div class="logo-section">
+            <h1 class="shimmer">Lastpage</h1>
+        </div>
+        <div class="menu-section">
+            <a href="{% url 'home' %}"><div class="menu"><i class="fa fa-caret-left" style="margin-right: 5px;"></i>Home</div></a>
+        </div>
+    </div>
+    </div>
+    <!---------------------------------------Header--------------------------------------->
+    <div class="page-container">
+
+        
+        <div class="page">
+            <div class="details-profile">
+                <div class="page-name" style="width: 25vb" ><p style="margin: 0;padding: 3;">My profile</p></div>
+                <h2 style="font-weight: lighter;margin-bottom: 0%;text-transform: lowercase;">@{{ keyprofile.user_name }}</h2>
+                <h4 style="font-weight: lighter;margin: 0%;text-transform: lowercase;">{{ keyprofile.mail_id}}
+                    {% if keyprofile.verify == "Verified" %}
+                    <i class="fa fa-check-circle-o" style="color:green"></i>
+                    {% else %}
+                    <a href="{% url 'verify' %}"><i class="fa fa-question-circle" style="color:red"></i></a>
+                    {% endif %}
+
+                </h4>
+                <div class="edit-profile-pw">
+                    <a class="edit-profile-pw" href="{% url 'editprofile' %}"><i class="fa fa-cog fa-fw" aria-hidden="true"></i>Edit profile</a>
+                    <a class="edit-profile-pw" href="{% url 'changepw' %}"><i class="fa fa-cog fa-fw" aria-hidden="true"></i>Change password</a>
+                    <a class="edit-profile-pw" href="{% url 'logout' %}"><i class="fa fa-cog fa-fw" aria-hidden="true"></i>Log out</a>
+                </div>
+    
+        {% for book, coll_pname in keycoll %}
+        <form method="POST" enctype="multipart/form-data" class="post" style="width: 98%;">
+            {% csrf_token %}
+            <div class="post-column-1">
+                {% if book.image %}
+                <img src="{{ MEDIA_URL }}{{ book.image.url }}">
+            {% else %}
+                <!-- Handle case where image is missing -->
+                <p>No image available</p>
+            {% endif %}
+            </div>
+            <div class="post-column-2">
+                <div class="Profile-post" style="display: flex;justify-content: center;">
+                    <p style="margin-right: 15px;"><i class="fa fa-map-marker" style="margin-right: 5px;"></i>{{ coll_pname }}</p>
+                </div>
+                <div class="desc-post">
+                    <p style="margin:0px;padding: 0px;font-weight: bold;">{{ book.title }}</p>
+                    <p style="margin:0px;padding: 0px;font-size:small;">by {{ book.author }}</p>
+                    <p style="margin:0px;padding: 0px;text-align: justify;">{{ book.review }}</p>
+                </div>
+                <div class="ratex-post">
+                    <div class="coin">
+                        <p><i class="fa fa-empire" style="margin-right: 5px;"></i>{{ book.coin }}</p>
+                    </div>
+                    <div class="excahnge">
+                        <a href="{% url 'deletepost' slug=book.slug %}"><i class="fa fa-trash-o"></i> Delete</a>
+                    </div>
+                    <div class="excahnge">
+                        <a href="{% url 'editpost' slug=book.slug %}"><i class="fa fa-pencil" aria-hidden="true"></i> Edit</a>
+                    </div>
+                </div>
+            </div>
+
+
+        </form>
+        {% endfor %}
+    
+
+         <!--------------------------------------post 01--------------------------------->
+            </div>
+            
+</body>
+</html>

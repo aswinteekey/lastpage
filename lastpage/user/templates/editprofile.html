@@ -1,0 +1,48 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lastpage</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+    <!---------------------------------------Header--------------------------------------->
+    <div class="header-contain">
+    <div class="head-section">
+        <div class="logo-section">
+            <h1 class="shimmer">Lastpage</h1>
+        </div>
+        <div class="menu-section">
+            <a href="{% url 'profile' %}"><div class="menu"><i class="fa fa-caret-left" style="margin-right: 5px;"></i>Profile</div></a>
+        </div>
+    </div>
+    </div>
+    <!---------------------------------------Header--------------------------------------->
+    <div class="page-container">
+
+        <div class="page">
+            <div class="details-new">
+                <div class="page-name" style="width: 25vb"><p style="margin: 0;padding: 3;">Edit profile</p></div>
+                <form method="POST" enctype="multipart/form-data" class="createnew-form">
+                    {% csrf_token %}
+                    <p style="color:red;font-size:small;margin-bottom:0;">{{ message }}</p>
+                    <label >Username</label>
+                    <input type="text" value="{{ username }}" style="text-transform: lowercase;" name="form_name" required>
+                    <label >Contact number</label>
+                    <input type="text" value="{{ mob }}" name="form_mob"  required>
+                </br>
+                    <label >Enter password to confirm</label>
+                    <input type="password" placeholder="Your password" name="form_PW" required>
+
+                    <input type="submit" value="Done"  style="margin-top: 3vh;">
+                </form>
+            </div>
+
+        </div>
+      
+    </div>
+
+</body>
+</html>

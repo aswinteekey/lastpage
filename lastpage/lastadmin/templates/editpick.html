@@ -1,0 +1,36 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lastpage Admin</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'lastpage.lastadmin/style.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+    <!---------------------------------------Header--------------------------------------->
+    <div class="ad-header-contain">
+    <div class="ad-head-section">
+        <div class="ad-logo-section">
+            <h1>Lastpage admin</h1>
+        </div>
+        <div class="ad-menu-section">
+            <a href="{% url 'addpick' %}"><div class="ad-menu"><i class="fa fa-caret-left" style="margin-right: 5px;"></i>Add collection point</div></a>
+        </div>
+    </div>
+    </div>
+    <div class="ad-page-container">
+        <div class="pick">
+                <form class="add-pick" method="POST">
+                    {% csrf_token %}
+                    <p style="margin-top: 0%;">Edit collection point</p>
+                    <label >Pickup point name</label>
+                    <input type="text" style="width: 40vb;" name="form_col_name" value="{{edit.coll_pname}}" required>
+                    <label >Location link</label>
+                    <input type="text" style="width: 40vb;" name="form_col_link"  value="{{edit.coll_plink}}" required>
+                    <input type="submit" value="Done" style="margin-top: 2vh;">
+                </form>
+        </div>
+    </div>
+</body>
+</html>

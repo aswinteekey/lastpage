@@ -1,0 +1,56 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lastpage</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+    <!---------------------------------------Header--------------------------------------->
+    <div class="header-contain">
+    <div class="head-section">
+        <div class="logo-section">
+            <h1 class="shimmer">Lastpage</h1>
+        </div>
+        <div class="menu-section">
+            <a href="{% url 'request' %}"><div class="menu"><i class="fa fa-caret-left" style="margin-right: 5px;"></i>Request</div></a>
+        </div>
+    </div>
+    </div>
+    <!---------------------------------------Header--------------------------------------->
+    <div class="page-container">
+
+        <div class="msg">
+            <div class="messenger-name">
+                <h3>@arathi</h3>
+                <p>your exchange request started !</br>
+                    please put th book in vatakara pickup point</br>
+                    your OTP is 21547895</p>
+               <!---after put otp ---------------------------
+                <p>wait for arathi to take book</p>
+                --> 
+                <!---book taken  ---------------------------
+                <p>your exchange has been completed !</br>
+                    you got 10 coins</p>
+                --> 
+               <!---retun starts otp ----------------
+                <p>return initiated</br>
+                    your OTP is 25874680</p> 
+                --> 
+            <!---retun end----------------
+             <p>return completed !</br>
+                 10 coins re-transferred</p> 
+             --> 
+                
+            </div>
+
+
+        </div>
+
+      
+    </div>
+
+</body>
+</html>

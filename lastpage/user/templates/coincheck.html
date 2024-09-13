@@ -1,0 +1,50 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lastpage</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+    <!---------------------------------------Header--------------------------------------->
+    <div class="header-contain">
+    <div class="head-section">
+        <div class="logo-section">
+            <h1 class="shimmer">Lastpage</h1>
+        </div>
+        <div class="menu-section">
+            <a href="{% url 'home' %}"><div class="menu"><i class="fa fa-caret-left" style="margin-right: 5px;"></i>Home</div></a>
+        </div>
+    </div>
+    </div>
+    <div class="page-container">
+
+        <div class="dash">
+        
+            <div class="sqr" style="margin:4vh">
+                <div class="sqr2" style="padding: 2vh;">
+                    <img src="{% static 'img/idea2.gif' %}" alt="Oops GIF" style="height:25vh;opacity:60%">
+                    <h3 style="margin-bottom: 0%;margin-top: 0%">Ooopz...</h3>
+                    <p style="margin-bottom: 0%;">You don't have much coins to proceed !</p></br>
+                    <div class="sugg2">
+                        <div class="sugg">
+                            <p style="margin: 0%;text-align: center;"></br>You can create new post about a book you have.</br>
+                                   And earn coins by exchange the book.</br>
+                                   Share stories , Share worlds ! </p>
+                            <input type="button" value="Create" onclick="location.href='{% url 'createnew' %}'" style="margin-top: 3vh;">
+                        </div>
+                        <div class="sugg">
+                            <p style="margin: 0%;text-align: center;"></br>You can buy coins from our platform.</br>
+                                   By using upi scanning.</br>
+                                   An investment in knowledge pays the best interest ! </p>
+                            <input type="button" value="Buy" onclick="location.href='{% url 'buycoin' %}'" style="margin-top: 3vh;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+      
+    </div>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lastpage</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+    <!---------------------------------------Header--------------------------------------->
+    <div class="header-contain">
+    <div class="head-section">
+        <div class="logo-section">
+            <h1 class="shimmer">Lastpage</h1>
+        </div>
+        <div class="menu-section">
+            <a href="{% url 'home' %}"><div class="menu"><i class="fa fa-caret-left" style="margin-right: 5px;"></i>Home</div></a>
+        </div>
+    </div>
+    </div>
+    <!---------------------------------------Header--------------------------------------->
+    <div class="page-container">
+        <div class="page" style="height:70vh;">
+            <div class="details-profile" style="padding: 0 5vb 5vb 5vb;">
+                <div class="page-name" style="width: 30vb"><p style="margin: 0;padding: 3;">Verify email</p></div></br>
+                <h4 style="font-weight: lighter;margin: 0%;text-align: justify;">We have send a verification code to {{ mail }} to verify your email</h4>
+                <p style="font-size:small">Verification of email helps you to proceed book request,buy coins and much more !</p>
+                <form method="POST" enctype="multipart/form-data" class="createnew-form">
+                    {% csrf_token %}  
+                    <input type="text" name="form_otp" style="width:18vw" required>
+                    <p style="color:red;font-size:small;margin-bottom:0px;">{{ error }}</p>
+                    <input type="submit" value="Verify"style="margin-top: 3vh;">
+                </form>
+            </div>
+
+        </div>
+    </div>
+</body>
+</html>

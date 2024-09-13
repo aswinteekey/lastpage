@@ -1,0 +1,54 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lastpage</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script>
+        function disableSubmit() {
+            document.getElementById("submitBtn").disabled = true; // Disable the submit button
+            window.onload = function() {
+                document.getElementById("submitBtn").disabled = false; // Enable the submit button when the page is loaded
+            };
+        }
+    </script>
+</head>
+<body>
+    <!---------------------------------------Header--------------------------------------->
+    <div class="header-contain">
+    <div class="head-section">
+        <div class="logo-section">
+            <h1 class="shimmer">Lastpage</h1>
+        </div>
+        <div class="menu-section">
+            <a href="{% url 'dashboard' %}"><div class="menu"><i class="fa fa-caret-left" style="margin-right: 5px;"></i>Dashboard</div></a>
+        </div>
+    </div>
+    </div>
+    <!---------------------------------------Header--------------------------------------->
+    <div class="page-container">
+
+        <div class="page">
+            <div class="details-new">
+                <div class="page-name" style="width: 25vb"><p style="margin: 0;padding: 3;">Suggestions</p></div>
+                <form method="POST" enctype="multipart/form-data" class="createnew-form" onsubmit="disableSubmit()">
+                    {% csrf_token %}  
+                    <label >Location name</label>
+                    <input type="text" placeholder="Eg : Vatakara bus stand" name="form_topic" required>
+                    <label >Location link</label>
+                    <input type="text" name="form_desc" required>
+                    <label style="font-size: x-small;">*Location link can be obtained from Google map.</br>
+                        Your proposal goes through manual evaluation, Once our team accepts the pickup point
+                         it will be added to this platform </label> 
+                    <input type="submit" value="Done" style="margin-top: 3vh;" id="submitBtn">
+                </form>
+            </div>
+
+        </div>
+      
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,41 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Collection point</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'lastpage.collection/stylecoll.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+    <!---------------------------------------Header--------------------------------------->
+    <div class="ad-header-contain">
+    <div class="ad-head-section">
+        <div class="ad-logo-section">
+            <h1>Lastpage Collection point </h1>
+        </div>
+        <div class="ad-logo-section">
+            <h2><i class="fa fa-map-marker" style="margin-right: 5px;"></i>{{ key.coll_pname }} </h2>
+        </div>
+    </div>
+    </div>
+    <div class="ad-page-container">
+
+        <div class="ad-dash">
+            <div class="ad-sqr">
+                <a href="{% url 'drop' %}" class="ad-sqr3">
+                    <h2 style="font-weight: 100;margin-bottom: 0%;">Drop</h2>
+                    <p style="margin-top: 0%;">a book</p>
+                </a>
+                <a href="{% url 'pick' %}" class="ad-sqr3">
+                    <h2 style="font-weight: 100;margin-bottom: 0%;">Take</h2>
+                    <p style="margin-top: 0%;">a book</p>
+                </a>
+                <a href="{% url 'reject' %}" class="ad-sqr3">
+                    <h2 style="font-weight: 100;margin-bottom: 0%;">Rejected</h2>
+                    <p style="margin-top: 0%;">book transactions</p>
+                </a>
+            </div>   
+    </div>
+</body>
+</html>

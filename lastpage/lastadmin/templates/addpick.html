@@ -1,0 +1,52 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lastpage Admin</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'lastpage.lastadmin/style.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+    <!---------------------------------------Header--------------------------------------->
+    <div class="ad-header-contain">
+    <div class="ad-head-section">
+        <div class="ad-logo-section">
+            <h1>Lastpage admin</h1>
+        </div>
+        <div class="ad-menu-section">
+            <a href="{% url 'adminhome' %}"><div class="ad-menu"><i class="fa fa-caret-left" style="margin-right: 5px;"></i>Home</div></a>
+        </div>
+    </div>
+    </div>
+    <div class="ad-page-container2">
+        <div class="pick">
+                <form class="add-pick" method="POST">
+                    {% csrf_token %}
+                    <p style="margin-top: 0%;">Add a new collection point</p>
+                    <label >Collection point name</label>
+                    <input type="text" style="width: 40vb;" name="form_col_name" required>
+                    <label >Location link</label>
+                    <input type="text" style="width: 40vb;" name="form_col_link" required>
+                    <label style="font-size: x-small;">*Before publish,please verify this pickup point is not present in available pickup point list below</label> 
+                    <input type="submit" value="Publish" style="margin-top: 2vh;">
+                </form>
+        </div>
+        <div class="pick" id="available" style="padding-bottom: 2vh;">
+            <div class="add-pick">
+                <p style="margin-top: 0%;">Available collection points</p>
+                <table>
+                {% for key_obj in key %}
+                <tr>
+                <div class="add-pick-del">
+                    <td class="add-pick-del"><a href=""><i class="fa fa-map-marker" style="margin-right: 1vb;"></i>{{key_obj.coll_pname}}({{key_obj.coll_pw}})</a></td>
+                    <td class="add-pick-del" style="padding-left:1vw;"><a href="{% url 'editpick' key_obj.coll_id %}">  Edit  </a></td>
+                </div>
+                </tr>
+                {% endfor%}
+                </table>
+           </div>
+        </div>
+    </div>
+</body>
+</html>

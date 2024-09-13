@@ -1,0 +1,90 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lastpage</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+    <!---------------------------------------Header--------------------------------------->
+    <div class="header-contain">
+    <div class="head-section">
+        <div class="logo-section">
+            <h1 class="shimmer">Lastpage</h1>
+        </div>
+        <div class="menu-section">
+            <a href="{% url 'home' %}"><div class="menu"><i class="fa fa-caret-left" style="margin-right: 5px;"></i>Home</div></a>
+        </div>
+    </div>
+    </div>
+    <div class="page-container">
+
+        <div class="dash">
+            <div class="details-profile">
+                <div class="page-name" style="width: 25vb" ><p style="margin: 0;padding: 3;">Dashboard</p></div> 
+            </div>
+            <div class="sqr">
+                <div class="sqr1">
+                    <h1 style="font-weight: 100;margin-bottom: 0%;">{{ read }}</h1>
+                    <p style="margin: 0%;">Books read</p></br>
+                </div>
+                <div class="sqr1">
+                    <h1 style="font-weight: 100;margin-bottom: 0%;">{{ share }}</h1>
+                    <p style="margin: 0%;">Books shared</p></br>
+                </div>
+                <div class="sqr1">
+                    <h1 style="font-weight: 100;margin-bottom: 0%;">{{ coin }}</h1>
+                    <p style="margin: 0%;">Coins remaining</p></br>
+                </div>
+            </div>
+            <div class="sqr" style="margin-top: 10vh;">
+                <div class="sqr1">
+                    <h1 style="font-weight: 100;margin-bottom: 0%;">{{ reject }}</h1>
+                    <p style="margin: 0%;">Books rejected</p></br>
+                </div>
+                <div class="sqr1">
+                    <h1 style="font-weight: 100;margin-bottom: 0%;">{{ report }}</h1>
+                    <p style="margin: 0%;">Books reported</p></br>
+                </div>
+                <div class="sqr1">
+                    <h1 style="font-weight: 100;margin-bottom: 0%;">{{ post }}</h1>
+                    <p style="margin: 0%;">Books posted</p></br>
+                </div>  
+
+            </div>
+        </br>
+            <div class="sqr" >
+                <div class="sqr2" style="padding: 2vh;">
+                    <p style="margin-bottom: 0%;">Suggestions</p>
+                    <div class="sugg2">
+                        <div class="sugg">
+                            <p style="margin-bottom: 0%;"><b>Genaral suggestions</b></p>
+                            <p style="margin: 0%;text-align: center;">Suggest ideas to improve our platform.</br>
+                                   That will help our community grow faster.</br>
+                                   Share stories , Share worlds ! </p>
+                            <input type="button" value="Suggest" onclick="location.href='{% url 'sugggen' %}'" style="margin-top: 3vh;">
+                        </div>
+                        <div class="sugg">
+                            <p style="margin-bottom: 0%;"><b>Pickup points suggestions</b></p>
+                            <p style="margin: 0%;text-align: center;">Help us add new pickup / exchange points by 
+                                suggesting relevant locations with details</br>
+                                Share stories , Share worlds ! </p>
+                            <input type="button" value="Suggest" onclick="location.href='{% url 'suggpick' %}'" style="margin-top: 3vh;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="sqr">
+                <div class="sqr2">
+                    <p style="margin-bottom: 0%;">Page coins</p>
+                    <p style="margin-top: 0%;font-size: small;">Page coins can be bought from the platform or 
+                        acquired through trading books.</p>
+                    <input type="button" value="Buy coins" onclick="location.href='{% url 'buycoin' %}'" style="margin-bottom: 2vh;">
+                </div>
+            </div>
+      
+    </div>
+</body>
+</html>
